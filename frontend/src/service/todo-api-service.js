@@ -1,3 +1,5 @@
+import axios from "axios";
+/*
 export const getTodos = () => {
     return fetch("/api/todo")
         .then(response => {
@@ -8,7 +10,13 @@ export const getTodos = () => {
             }
         )
 }
+*/
+export const getTodos=()=>{
+    return axios.get('/api/todo')
+        .then(response => response.data)
 
+}
+/*
 export const postTodo = (description) => {
     return fetch('/api/todo', {
         method: 'POST',
@@ -24,7 +32,22 @@ export const postTodo = (description) => {
         }
     )
 }
+*/
+export const postTodo=(description)=>{
+    const todo = {description, status: 'OPEN'}
+    return axios.post('/api/todo', todo)
+        .then(response => response.data)
 
+}
+
+
+export const putTodo=(todo)=>{
+    return axios
+        .put(`/api/todo/${todo.id}`, todo)
+        .then(response=>response.data)
+
+}
+/*
 export const putTodo = (todo) => {
     return fetch(`/api/todo/${todo.id}`, {
         method: 'PUT',
@@ -40,11 +63,16 @@ export const putTodo = (todo) => {
         }
     )
 }
+*/
+export const deleteTodo=(id)=>{
+    return axios.delete(`/api/todo/${id}`)
+}
 
+/*
 export const deleteTodo = (id) => {
     return fetch(`/api/todo/${id}`, {
         method: 'DELETE',
     })
-}
+}*/
 
 
