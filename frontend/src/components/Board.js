@@ -6,7 +6,7 @@ export default function Board({title,todos, onAdvance, onDelete}) {
 
     return (
         <section>
-            <h2>{title}</h2>
+            <Heading>{title}</Heading>
             <List>
                 {todos.map(todo => {
                     return (
@@ -25,6 +25,12 @@ export default function Board({title,todos, onAdvance, onDelete}) {
 };
 
 const List = styled.ul`
+  font-family: 'Montserrat', sans-serif;
+  max-width: 300px;
   list-style: none;
   padding: 0;
+`
+const Heading =styled.h2`
+  font-family: 'Montserrat', sans-serif;
+  
 `
