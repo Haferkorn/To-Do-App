@@ -1,6 +1,9 @@
 import styled from "styled-components/macro";
+import {useHistory} from "react-router-dom";
 
 export default function TodoItem({todo, onAdvance, onDelete}) {
+    const history=useHistory()
+
 
 
     return (
@@ -8,6 +11,7 @@ export default function TodoItem({todo, onAdvance, onDelete}) {
             <h3>{todo.description}</h3>
             {onAdvance && <UpdateButton onClick={() => onAdvance(todo)}>Advance</UpdateButton>}
             {onDelete && <DeleteButton onClick={() => onDelete(todo.id)}>Delete</DeleteButton>}
+            <button onClick={() => history.push(`/todo/${todo.id}`)}>Details</button>
         </Wrapper>
     )
 };

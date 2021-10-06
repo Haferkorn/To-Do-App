@@ -1,4 +1,4 @@
-import {Link, NavLink} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import "./NavBar.css"
 import styled from "styled-components/macro";
 

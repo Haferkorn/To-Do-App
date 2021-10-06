@@ -6,8 +6,11 @@ import styled from "styled-components/macro";
 import {useEffect, useState} from "react";
 import {deleteTodo, getTodos, postTodo, putTodo} from "./service/todo-api-service";
 import {getNextStatus} from "./service/todo-service";
-import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import BoardRender from "./components/BoardRender";
+import Details from "./components/Details";
+
+
 
 function App() {
 
@@ -53,16 +56,16 @@ function App() {
                        <NewTodo onAdd={addTodo}/>
 
                </Route>
-                <Route path="/:statusSlug">
+                <Route path="/:statusSlug" exact>
                         <BoardRender
                             todos={todos}
                             onAdvance={advanceTodo}
                             onDelete={removeTodo}
                         />
-
                 </Route>
-
-
+                <Route path="/todo/:id" exact>
+                   <Details/>
+                </Route>
             </Switch>
             </PageLayout>
         </Router>
