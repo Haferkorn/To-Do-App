@@ -7,7 +7,7 @@ import {useEffect, useState} from "react";
 import {deleteTodo, getTodos, postTodo, putTodo} from "./service/todo-api-service";
 import {getNextStatus} from "./service/todo-service";
 import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
-import Board from "./components/Board";
+import BoardRender from "./components/BoardRender";
 
 function App() {
 
@@ -45,7 +45,6 @@ function App() {
 
             <Switch>
                <Route path="/" exact>
-
                        <BoardsOverview
                            todos={todos}
                            onAdvance={advanceTodo}
@@ -54,40 +53,15 @@ function App() {
                        <NewTodo onAdd={addTodo}/>
 
                </Route>
-                <Route path="/open">
-
-
-                        <Board
-                            title={"Open"}
-                            filter={"OPEN"}
+                <Route path="/:statusSlug">
+                        <BoardRender
                             todos={todos}
                             onAdvance={advanceTodo}
                             onDelete={removeTodo}
                         />
 
                 </Route>
-                <Route path="/inprogress">
 
-                        <Board
-                            title={"In Progress"}
-                            filter={"IN_PROGRESS"}
-                            todos={todos}
-                            onAdvance={advanceTodo}
-                            onDelete={removeTodo}
-                        />
-
-                </Route>
-                <Route path="/done">
-
-                        <Board
-                            title={"Done"}
-                            filter={"DONE"}
-                            todos={todos}
-                            onAdvance={advanceTodo}
-                            onDelete={removeTodo}
-                        />
-
-                </Route>
 
             </Switch>
             </PageLayout>

@@ -1,4 +1,4 @@
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import "./NavBar.css"
 import styled from "styled-components/macro";
 
@@ -6,13 +6,13 @@ function NavBar(){
     return(
         <NavLayout>
 
-                    <LinkStyle href="/">All ToDos</LinkStyle>
+                    <NavLink to="/">All ToDos</NavLink>
 
-                    <LinkStyle href="/open">Open</LinkStyle>
+                    <NavLink to="/open">Open</NavLink>
 
-                    <LinkStyle href="/inprogress">In Progress</LinkStyle>
+                    <NavLink to="/inprogress">In Progress</NavLink>
 
-                    <LinkStyle href="/done">Done</LinkStyle>
+                    <NavLink to="/done">Done</NavLink>
 
         </NavLayout>
     );
@@ -20,11 +20,9 @@ function NavBar(){
 
 const NavLayout = styled.div`
   display: flex;
+  gap: 15px;
   justify-content: center;
   height: fit-content;
   
 `
-const LinkStyle =styled.a`
- padding: 5px;
-  
-`
+
