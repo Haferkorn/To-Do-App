@@ -6,13 +6,13 @@ function NavBar(){
     return(
         <NavLayout>
 
-                    <NavLink to="/">All ToDos</NavLink>
+                    <NavLink to="/" className="Nav-Bar">All ToDos</NavLink>
 
-                    <NavLink to="/open">Open</NavLink>
+                    <NavLink to="/open" className="Nav-Bar">Open</NavLink>
 
-                    <NavLink to="/inprogress">In Progress</NavLink>
+                    <NavLink to="/inprogress" className="Nav-Bar">In Progress</NavLink>
 
-                    <NavLink to="/done">Done</NavLink>
+                    <NavLink to="/done" className="Nav-Bar">Done</NavLink>
 
         </NavLayout>
     );
@@ -25,4 +25,5 @@ const NavLayout = styled.div`
   height: fit-content;
   
 `
+
 

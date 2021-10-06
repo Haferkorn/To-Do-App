@@ -1,4 +1,23 @@
-Link{
+.Nav-Bar:link{
+    color: #212738;
+    margin: 0;
+    padding: 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+.Nav-Bar:visited{
+    color: #212738;
+    margin: 0;
+    padding: 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+.Nav-Bar:hover{
+    color: #F3CA40;
+    margin: 0;
+    padding: 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+.Nav-Bar:active{
+    color: #F3CA40;
     margin: 0;
     padding: 5px;
     font-family: 'Montserrat', sans-serif;

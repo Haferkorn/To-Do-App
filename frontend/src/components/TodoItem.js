@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   border-radius: 10px;
   padding: 12px;
   margin: 12px;
-  background-color: ${props => props.status==="OPEN"? "#FB5012" :
+  background-color: ${props => props.status==="OPEN"? "#F97068" :
                                 props.status==="IN_PROGRESS"?"#83C9F4": 
                                         "#03FCBA"};
 `
