@@ -27,7 +27,7 @@ export default function BoardsOverview({todos, onAdvance, onDelete}) {
 
 const Main = styled.main`
   border: 1px solid black;
-  margin-bottom: 5px;
+  margin: 15px;
   font-family: 'Montserrat', sans-serif;
   overflow-y: scroll;
   display: grid;
