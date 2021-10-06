@@ -21,6 +21,7 @@ export default function NewTodo({onAdd}) {
 };
 
 const FooterStyled = styled.footer`
+  font-family: 'Montserrat', sans-serif;
   display: grid;
   grid-template-columns: 1fr min-content;
   margin-bottom: 18px;

@@ -13,9 +13,9 @@ export default function TodoItem({todo, onAdvance, onDelete}) {
 };
 
 const Wrapper = styled.div`
-  border: 3px solid darkblue;
-  background-color: ghostwhite;
-  border-radius: 12px;
+  border: 3px solid #F9C784;
+  background-color: #F8F4E3;
+  border-radius: 10px;
   padding: 12px;
   margin: 12px;
 `

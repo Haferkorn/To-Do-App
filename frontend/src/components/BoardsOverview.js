@@ -3,20 +3,19 @@ import Board from "./Board";
 
 export default function BoardsOverview({todos, onAdvance, onDelete}) {
 
-    const openTodos = todos.filter(todo => todo.status === "OPEN")
-    const inProgressTodos = todos.filter(todo => todo.status === "IN_PROGRESS")
-    const doneTodos = todos.filter(todo => todo.status === "DONE")
-
     return (
         <Main>
             <Board title="Open"
-                   todos={openTodos}
+                   filter="OPEN"
+                   todos={todos}
                    onAdvance={onAdvance}/>
             <Board title="In Progress"
-                   todos={inProgressTodos}
+                   filter="IN_PROGRESS"
+                   todos={todos}
                    onAdvance={onAdvance}/>
             <Board title="Done"
-                   todos={doneTodos}
+                   filter="DONE"
+                   todos={todos}
                    onDelete={onDelete}
             />
         </Main>
@@ -24,6 +23,9 @@ export default function BoardsOverview({todos, onAdvance, onDelete}) {
 }
 
 const Main = styled.main`
+  border: 1px solid black;
+  margin-bottom: 5px;
+  font-family: 'Montserrat', sans-serif;
   overflow-y: scroll;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
