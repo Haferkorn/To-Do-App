@@ -1,5 +1,12 @@
 import Board from "./Board";
 import {useParams} from "react-router-dom";
+import PropTypes from "prop-types";
+
+BoardRender.propTypes={
+    todos: PropTypes.array.isRequired,
+    onAdvance: PropTypes.func,
+    onDelete: PropTypes.func
+}
 
 export default function BoardRender({todos, onAdvance, onDelete}) {
 

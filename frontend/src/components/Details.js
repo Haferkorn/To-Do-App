@@ -1,19 +1,15 @@
 import {useParams} from "react-router-dom";
 import styled from "styled-components/macro";
-import {getTodos, getTodosByID} from "../service/todo-api-service";
-import {useEffect, useState} from "react";
-import TodoItem from "./TodoItem";
+
+import useTodo from "../hooks/useTodo";
+
 
 
 
 function Details() {
     const {id} = useParams()
-    const [oneTodo, setOneTodo]=useState({})
 
-    useEffect(()=>{
-        getTodosByID(id).then(data => setOneTodo(data))
-    },[id])
-
+    const {oneTodo}=useTodo(id);
 
     return (
         <Wrapper>
