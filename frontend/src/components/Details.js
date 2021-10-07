@@ -1,5 +1,5 @@
 import {useParams} from "react-router-dom";
-
+import styled from "styled-components/macro";
 import {getTodos, getTodosByID} from "../service/todo-api-service";
 import {useEffect, useState} from "react";
 import TodoItem from "./TodoItem";
@@ -12,19 +12,26 @@ function Details() {
 
     useEffect(()=>{
         getTodosByID(id).then(data => setOneTodo(data))
-    },[])
+    },[id])
 
 
     return (
-        <div>
+        <Wrapper>
             <h2>Details Page</h2>
             <h3>{oneTodo.description}</h3>
             <h3>{oneTodo.status}</h3>
             <p>Die id des Todos ist: {id}</p>
 
-        </div>
+        </Wrapper>
 
     );
 
 }
 export default Details;
+
+const Wrapper =styled.div`
+  margin: 40px;
+  border: 1px solid black;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+`
