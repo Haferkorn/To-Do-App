@@ -3,6 +3,7 @@ import {useHistory} from "react-router-dom";
 import PropTypes from "prop-types";
 import {useState} from "react";
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
+import { FaLongArrowAltLeft } from "react-icons/fa";
 
 
 
@@ -30,6 +31,7 @@ export default function TodoItem({todo, onAdvance, onDelete}) {
                  {onAdvance && <UpdateButton onClick={() => onAdvance(todo)}>Advance</UpdateButton>}
                  {onDelete && <DeleteButton onClick={() => onDelete(todo.id)}>Delete</DeleteButton>}
                 <UpdateButton onClick={() => history.push(`/todo/${todo.id}`)}>Details</UpdateButton>
+                    <UpdateButton onClick={()=>handlestatus()}><FaLongArrowAltLeft size={10}/> </UpdateButton>
                 </div>: <UpdateButton onClick={()=>handlestatus()}><Icon size={20}/> </UpdateButton>
             }
         </Wrapper>
