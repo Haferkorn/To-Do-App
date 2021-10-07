@@ -8,8 +8,6 @@ import BoardRender from "./components/BoardRender";
 import Details from "./components/Details";
 import useTodos from "./hooks/useTodos";
 
-
-
 function App() {
 
     const {todos, addTodo, advanceTodo, removeTodo}=useTodos()

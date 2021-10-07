@@ -1,6 +1,10 @@
 import styled from "styled-components/macro";
 import {useHistory} from "react-router-dom";
 import PropTypes from "prop-types";
+import {useState} from "react";
+import { FaRegArrowAltCircleRight } from "react-icons/fa";
+
+
 
 TodoItem.propTypes={
     todo: PropTypes.object.isRequired,
@@ -11,12 +15,23 @@ TodoItem.propTypes={
 export default function TodoItem({todo, onAdvance, onDelete}) {
     const history=useHistory()
 
+    const [displayButtons, setdisplaybuttons]=useState(false);
+
+    const handlestatus=()=>{
+        setdisplaybuttons(!displayButtons);
+    }
+
+
     return (
         <Wrapper status={todo.status}>
             <h3>{todo.description}</h3>
-            {onAdvance && <UpdateButton onClick={() => onAdvance(todo)}>Advance</UpdateButton>}
-            {onDelete && <DeleteButton onClick={() => onDelete(todo.id)}>Delete</DeleteButton>}
-            <UpdateButton onClick={() => history.push(`/todo/${todo.id}`)}>Details</UpdateButton>
+            {displayButtons?
+                <div>
+                 {onAdvance && <UpdateButton onClick={() => onAdvance(todo)}>Advance</UpdateButton>}
+                 {onDelete && <DeleteButton onClick={() => onDelete(todo.id)}>Delete</DeleteButton>}
+                <UpdateButton onClick={() => history.push(`/todo/${todo.id}`)}>Details</UpdateButton>
+                </div>: <UpdateButton onClick={()=>handlestatus()}><Icon size={20}/> </UpdateButton>
+            }
         </Wrapper>
     )
 };
@@ -67,4 +82,7 @@ const DeleteButton =styled.button`
   &:hover {
     background-color: #96031A;
     
+`
+const Icon =styled(FaRegArrowAltCircleRight)`
+    width: 100px;
 `
