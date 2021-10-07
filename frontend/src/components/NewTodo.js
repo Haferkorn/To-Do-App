@@ -9,23 +9,27 @@ NewTodo.propTypes = {
 export default function NewTodo({onAdd}) {
 	const [description, setDescription] = useState("");
 
-	const handleClick = () => {
+	const handleClick = (event) => {
+		event.preventDefault()
+		if(!description){
+			return
+		}
 		onAdd(description);
 		setDescription("");
 	};
 
 	return (
-		<FooterStyled>
-			<InputField
-				value={description}
-				onChange={(event) => setDescription(event.target.value)}
-			/>
-			<AddButton onClick={handleClick}>Add</AddButton>
-		</FooterStyled>
+		<Form onSubmit={handleClick}>
+				<InputField
+					value={description}
+					onChange={(event) => setDescription(event.target.value)}
+				/>
+				<AddButton>Add</AddButton>
+		</Form>
 	);
 }
 
-const FooterStyled = styled.footer`
+const Form = styled.form`
 	font-family: "Montserrat", sans-serif;
 	display: flex;
 	justify-content: center;
