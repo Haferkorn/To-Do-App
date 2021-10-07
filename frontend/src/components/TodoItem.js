@@ -4,8 +4,6 @@ import {useHistory} from "react-router-dom";
 export default function TodoItem({todo, onAdvance, onDelete}) {
     const history=useHistory()
 
-
-
     return (
         <Wrapper status={todo.status}>
             <h3>{todo.description}</h3>

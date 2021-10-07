@@ -15,6 +15,13 @@ export const getTodos=()=>{
     return axios.get('/api/todo')
         .then(response => response.data)
 
+
+}
+
+export const getTodosByID=(id)=>{
+    return axios.get('/api/todo/'+id)
+        .then(response => response.data)
+
 }
 /*
 export const postTodo = (description) => {
