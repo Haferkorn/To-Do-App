@@ -9,7 +9,7 @@ export default function TodoItem({todo, onAdvance, onDelete}) {
             <h3>{todo.description}</h3>
             {onAdvance && <UpdateButton onClick={() => onAdvance(todo)}>Advance</UpdateButton>}
             {onDelete && <DeleteButton onClick={() => onDelete(todo.id)}>Delete</DeleteButton>}
-            <button onClick={() => history.push(`/todo/${todo.id}`)}>Details</button>
+            <UpdateButton onClick={() => history.push(`/todo/${todo.id}`)}>Details</UpdateButton>
         </Wrapper>
     )
 };
@@ -26,13 +26,15 @@ const Wrapper = styled.div`
                                         "#03FCBA"};
 `
 const UpdateButton =styled.button`
+  gap: 5px;
+
   box-shadow: 0px 10px 14px -7px #276873;
   background-color: #A29C9B;
   border-radius: 8px;
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
-  font-family: Arial;
+  font-family: 'Montserrat', sans-serif;
   font-size: 10px;
   padding:8px 8px;
   text-decoration: none;
