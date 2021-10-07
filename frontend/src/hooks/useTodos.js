@@ -1,41 +1,41 @@
 import {useEffect, useState} from "react";
-import {deleteTodo, getTodos, postTodo, putTodo} from "../service/todo-api-service";
+import {
+	deleteTodo,
+	getTodos,
+	postTodo,
+	putTodo,
+} from "../service/todo-api-service";
 import {getNextStatus} from "../service/todo-service";
 
+export default function useTodos() {
+	const [todos, setTodos] = useState([]);
 
-export default function useTodos(){
+	const addTodo = (description) => {
+		postTodo(description).then((addedTodo) => setTodos([...todos, addedTodo]));
+	};
 
-    const [todos, setTodos] = useState([]);
+	const advanceTodo = (todo) => {
+		const newStatus = getNextStatus(todo.status);
+		const advancedTodo = {...todo, status: newStatus};
+		putTodo(advancedTodo).then((updatedTodo) =>
+			setTodos(
+				todos.map((item) => (updatedTodo.id === item.id ? advancedTodo : item))
+			)
+		);
+	};
 
-    const addTodo = (description) => {
-        postTodo(description)
-            .then(addedTodo => setTodos([...todos, addedTodo]))
-    }
+	const removeTodo = (id) => {
+		deleteTodo(id).then(() => setTodos(todos.filter((todo) => todo.id !== id)));
+	};
 
-    const advanceTodo = (todo) => {
-        const newStatus = getNextStatus(todo.status)
-        const advancedTodo = {...todo, status: newStatus}
-        putTodo(advancedTodo)
-            .then(updatedTodo =>
-                setTodos(todos.map(item => updatedTodo.id === item.id ? advancedTodo : item)))
-    }
+	useEffect(() => {
+		getTodos().then((todos) => setTodos(todos));
+	}, []);
 
-    const removeTodo = (id) => {
-        deleteTodo(id)
-            .then(() => setTodos(todos.filter(todo => todo.id !== id)))
-    }
-
-
-    useEffect(() => {
-        getTodos()
-            .then(todos => setTodos(todos))
-    }, [])
-
-    return {
-        todos,
-        addTodo,
-        advanceTodo,
-        removeTodo
-    }
-
+	return {
+		todos,
+		addTodo,
+		advanceTodo,
+		removeTodo,
+	};
 }
